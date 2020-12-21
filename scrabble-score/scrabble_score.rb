@@ -7,7 +7,7 @@ class Scrabble
 
   def initialize(input)
     @word = if input
-              input.downcase.scan(/(?!'.*')\b[\w']+\b/).join
+              input.downcase.scan(/\w/).join
             else
               ''
             end

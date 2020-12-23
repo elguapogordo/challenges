@@ -1,14 +1,10 @@
 class Luhn
   def self.valid?(string)
-    valid_length?(string) && valid_chars?(string) && convert?(string.scan(/([0-9])/).flatten)
+    validate?(string.delete(' ')) && convert?(string.scan(/([0-9])/).flatten)
   end
 
-  def self.valid_length?(string)
-    string.scan(/([0-9])/).join.size > 1
-  end
-
-  def self.valid_chars?(string)
-    string == string.scan(/([0-9 ])/).join
+  def self.validate?(string)
+    string.size > 1 && !string.match?(/\D/)
   end
 
   def self.convert?(string)
